@@ -2,20 +2,21 @@ import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 import TextInput from './TextInput';
 
-class BlogEntry extends Component {
+export default class BlogEntry extends Component {
   constructor(props, context) {
     super(props, context);
   }
 
   render() {
-    const {blog} = this.props;
+    const {blog, deleteBlog} = this.props;
 
     return (
       <li className='blog-entry'>
         <div className='view'>
-          <label for="">
+          <label>
             {blog.text}
           </label>
+          <button className='destroy' onClick={() => deleteBlog(blog.id)}>X</button>
         </div>
       </li>
     );
@@ -25,5 +26,3 @@ class BlogEntry extends Component {
 BlogEntry.propTypes = {
   blog: PropTypes.object.isRequired
 };
-
-export default BlogEntry;

@@ -13,7 +13,7 @@ export default function blogs(state = initialState, action) {
       return [{
         id: state.reduce((maxId, blog) => Math.max(blog.id, maxId), -1) + 1,
         text: action.text
-      }];
+      }, ...state];
     case DELETE_BLOG:
       return state.filter(blog =>
         blog.id !== action.id
