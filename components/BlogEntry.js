@@ -10,7 +10,7 @@ export default class BlogEntry extends Component {
     };
   }
 
-  handleDoubleClick() {
+  handleDoubleClick = () => {
     this.setState({editing: true});
   }
 
@@ -35,7 +35,7 @@ export default class BlogEntry extends Component {
     } else {
       element = (
         <div className='view'>
-          <label onDoubleClick={this.handleDoubleClick.bind(this)}>
+          <label onDoubleClick={this.handleDoubleClick}>
             {blog.text}
           </label>
           <button className='destroy' onClick={() => deleteBlog(blog.id)}>X</button>
