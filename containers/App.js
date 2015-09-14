@@ -8,22 +8,24 @@ import * as BlogActions from '../actions/blogactions';
 
 class App extends Component {
   render() {
+    const { blogs, dispatch } = this.props;
+    const actions = bindActionCreators(BlogActions, dispatch);
     return (
       <div>
-        <h1>Welcome to my blog</h1>
+        <MainSection blogs={blogs} actions={actions}/>
       </div>
     );
   }
 }
 
 App.propTypes = {
-  blogactions: PropTypes.array.isRequired,
+  blogs: PropTypes.array.isRequired,
   dispatch: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
   return {
-    blogactions: state.blogactions
+    blogs: state.blogs
   };
 }
 

@@ -7,24 +7,22 @@ const initialState = [
   }
 ];
 
-export default function blogReducer(state = initialState, action) {
+export default function blogs(state = initialState, action) {
   switch(action.type) {
     case CREATE_BLOG:
       return [{
-        id: state.reduce((maxId, blog) => {
-          Math.max(blog.id, maxId), -1
-        }) + 1,
+        id: state.reduce((maxId, blog) => Math.max(blog.id, maxId), -1) + 1,
         text: action.text
-      }, ...state];
+      }];
     case DELETE_BLOG:
-      return state.filter(blog => {
+      return state.filter(blog =>
         blog.id !== action.id
-      });
+      );
     case EDIT_BLOG:
-      return state.map(blog => {
+      return state.map(blog =>
         blog.id === action.id ?
           Object.assign({}, blog, {text: action.text}) : blog
-        });
+        );
     default:
       return state;
   }
